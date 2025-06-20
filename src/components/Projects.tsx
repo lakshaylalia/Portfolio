@@ -109,8 +109,8 @@ const Projects: React.FC = () => {
       color: 'blue',
       gradient: 'from-blue-500 via-indigo-500 to-purple-500',
       features: ['Responsive Design', 'Smooth Animations', 'Dark Mode', 'Contact Form', 'Live Deploy'],
-      github: 'https://github.com/lakshaylalia/portfolio',
-      demo: 'https://lakshaylalia.vercel.app/',
+      github: 'https://github.com/lakshaylalia/Portfolio.git',
+      demo: 'https://portfolio-vadv.onrender.com/',
       status: 'Live',
       year: '2025'
     },
