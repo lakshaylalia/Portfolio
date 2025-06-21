@@ -27,22 +27,22 @@ const Experience: React.FC = () => {
         }
       );
 
-      gsap.fromTo('.achievement-card',
-        { y: 30, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 0.6,
-          stagger: 0.2,
-          ease: 'power3.out',
-          scrollTrigger: {
-            trigger: '.achievements-section',
-            start: 'top 80%',
-            end: 'bottom 20%',
-            toggleActions: 'play none none reverse'
-          }
-        }
-      );
+      // gsap.fromTo('.achievement-card',
+      //   { y: 30, opacity: 0 },
+      //   {
+      //     y: 0,
+      //     opacity: 1,
+      //     duration: 0.6,
+      //     stagger: 0.2,
+      //     ease: 'power3.out',
+      //     scrollTrigger: {
+      //       trigger: '.achievements-section',
+      //       start: 'top 80%',
+      //       end: 'bottom 20%',
+      //       toggleActions: 'play none none reverse'
+      //     }
+      //   }
+      // );
     }, sectionRef);
 
     return () => ctx.revert();
@@ -53,7 +53,7 @@ const Experience: React.FC = () => {
       title: 'Secretary',
       organization: 'Computer Science and Engineering Club (CSEC)',
       location: 'NIT Hamirpur',
-      period: '2023 - Present',
+      period: '2024 - Present',
       type: 'Leadership Role',
       description: 'Leading the technical initiatives and community engagement for the CSE department club.',
       responsibilities: [
@@ -93,26 +93,26 @@ const Experience: React.FC = () => {
     }
   ];
 
-  const achievements = [
-    {
-      title: '300+ DSA Problems',
-      description: 'Solved across LeetCode, GeeksforGeeks, and Codeforces',
-      icon: Award,
-      color: 'green'
-    },
-    {
-      title: 'Full Stack Projects',
-      description: '5+ complete MERN stack applications developed',
-      icon: Users,
-      color: 'blue'
-    },
-    {
-      title: 'Technical Leadership',
-      description: 'Leading CSEC initiatives and hackathon organizations',
-      icon: Zap,
-      color: 'purple'
-    }
-  ];
+  // const achievements = [
+  //   {
+  //     title: '300+ DSA Problems',
+  //     description: 'Solved across LeetCode, GeeksforGeeks, and Codeforces',
+  //     icon: Award,
+  //     color: 'green'
+  //   },
+  //   {
+  //     title: 'Full Stack Projects',
+  //     description: '5+ complete MERN stack applications developed',
+  //     icon: Users,
+  //     color: 'blue'
+  //   },
+  //   {
+  //     title: 'Technical Leadership',
+  //     description: 'Leading CSEC initiatives and hackathon organizations',
+  //     icon: Zap,
+  //     color: 'purple'
+  //   }
+  // ];
 
   const getColorClasses = (color: string) => {
     const colorMap = {
@@ -228,7 +228,7 @@ const Experience: React.FC = () => {
         </div>
 
         
-        <div className="achievements-section mt-20">
+        {/* <div className="achievements-section mt-20">
           <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-8 text-center">
             Key Achievements
           </h3>
@@ -253,7 +253,7 @@ const Experience: React.FC = () => {
               );
             })}
           </div>
-        </div>
+        </div> */}
       </div>
     </section>
   );

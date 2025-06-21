@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { Code, Users, Trophy, BookOpen } from 'lucide-react';
+import { Code, Trophy } from 'lucide-react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -55,23 +55,11 @@ const About: React.FC = () => {
       color: 'blue'
     },
     {
-      icon: Users,
-      title: 'CSEC Secretary',
-      description: 'Leading web development, media management, and community tech initiatives.',
-      color: 'green'
-    },
-    {
       icon: Trophy,
       title: 'Problem Solver',
-      description: 'Solved 250+ DSA problems across various competitive programming platforms.',
+      description: 'Solved 300+ DSA problems across various competitive programming platforms.',
       color: 'purple'
     },
-    {
-      icon: BookOpen,
-      title: 'Continuous Learner',
-      description: 'Always exploring new technologies and contributing to the developer community.',
-      color: 'orange'
-    }
   ];
 
   const getColorClasses = (color: string) => {

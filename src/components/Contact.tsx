@@ -328,7 +328,7 @@ const Contact: React.FC = () => {
                 <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
                   Follow Me
                 </h4>
-                <div className="flex dark:space-x-4 justify-evenly items-center lg:justify-start lg:space-x-4">
+                <div className="flex dark:space-x-4 justify-evenly items-center md:justify-start md:space-x-4">
                   {socialLinks.map((social, index) => {
                     const Icon = social.icon;
                     return (
@@ -458,7 +458,7 @@ const Contact: React.FC = () => {
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <a
-                  href="mailto:lakshay.lalia@nith.ac.in"
+                  href="mailto:lakshaylalia@gmail.com"
                   className="inline-flex items-center px-6 py-3 bg-blue-600 text-white dark:bg-white dark:text-blue-600 font-semibold rounded-lg hover:bg-blue-500 transition-colors duration-200"
                 >
                   <Mail className="w-5 h-5 mr-2" />

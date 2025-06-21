@@ -304,7 +304,7 @@ const Projects: React.FC = () => {
                   </div>
 
 
-                  <div className="flex space-x-3 mt-auto">
+                  <div className="flex md:space-x-3 mt-auto flex-col md:flex-row gap-2">
                     <a
                       href={project.github}
                       target='_blank'
@@ -313,7 +313,7 @@ const Projects: React.FC = () => {
                     >
                       <div className="absolute inset-0 bg-gradient-to-r from-gray-800 to-gray-900 dark:from-gray-100 dark:to-white opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300"></div>
                       <Github className="w-4 h-4 mr-2 relative z-10 group-hover/btn:rotate-12 transition-transform duration-300" />
-                      <span className="relative z-10">View Code</span>
+                      <span className="relative z-10 text-xs lg:text-base">View Code</span>
                     </a>
 
                     {project.demo && (
@@ -324,8 +324,8 @@ const Projects: React.FC = () => {
                         className={`flex-1 group/btn relative overflow-hidden flex items-center justify-center px-4 py-3 bg-gradient-to-r ${project.gradient} text-white rounded-xl hover:shadow-xl transition-all duration-300 text-sm font-medium shadow-lg hover:scale-105`}
                       >
                         <div className={`absolute inset-0 bg-gradient-to-r ${project.gradient} opacity-80 group-hover/btn:opacity-100 transition-opacity duration-300`}></div>
-                        <ExternalLink className="w-4 h-4 mr-2 relative z-10 group-hover/btn:rotate-12 transition-transform duration-300" />
-                        <span className="relative z-10">Live Demo</span>
+                        <ExternalLink className="w-4 h-4 lg:mr-2 relative z-10 group-hover/btn:rotate-12 transition-transform duration-300" />
+                        <span className="relative z-10 text-xs lg:text-base">Live Demo</span>
                       </a>
                     )}
                   </div>
