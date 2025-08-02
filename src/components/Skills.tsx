@@ -182,7 +182,7 @@ const Skills: React.FC = () => {
               <div className="text-4xl font-bold text-blue-600 dark:text-blue-400 mb-2">
                 <CountUp
                   from={0}
-                  to={300}
+                  to={400}
                   separator=","
                   direction="up"
                   duration={1}
