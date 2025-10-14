@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { Code, Trophy } from 'lucide-react';
+import { Code, Trophy, Zap, Cpu } from 'lucide-react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -50,24 +50,44 @@ const About: React.FC = () => {
   const highlights = [
     {
       icon: Code,
-      title: 'MERN Stack Developer',
-      description: 'Building full-stack applications with modern technologies and best practices.',
-      color: 'blue'
+      title: "Frontend Engineer",
+      description:
+        "Creating responsive and user-friendly interfaces with React and Tailwind CSS.",
+      color: "green",
+    },
+    {
+      icon: Zap,
+      title: "App Developer",
+      description:
+        "Building cross-platform mobile applications with seamless performance and modern UI.",
+      color: "indigo",
+    },
+    {
+      icon: Cpu,
+      title: "Backend Developer",
+      description:
+        "Designing APIs and scalable backend systems using Node.js or Spring Boot.",
+      color: "purple",
     },
     {
       icon: Trophy,
-      title: 'Problem Solver',
-      description: 'Solved 300+ DSA problems across various competitive programming platforms.',
-      color: 'purple'
+      title: "Problem Solver",
+      description:
+        "Solved 600+ DSA problems across various competitive programming platforms.",
+      color: "purple",
     },
   ];
 
   const getColorClasses = (color: string) => {
     const colorMap = {
-      blue: 'bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400',
-      green: 'bg-green-50 dark:bg-green-900/20 text-green-600 dark:text-green-400',
-      purple: 'bg-purple-50 dark:bg-purple-900/20 text-purple-600 dark:text-purple-400',
-      orange: 'bg-orange-50 dark:bg-orange-900/20 text-orange-600 dark:text-orange-400'
+      blue: "bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400",
+      green: "bg-green-50 dark:bg-green-900/20 text-green-600 dark:text-green-400",
+      purple:
+        "bg-purple-50 dark:bg-purple-900/20 text-purple-600 dark:text-purple-400",
+      orange:
+        "bg-orange-50 dark:bg-orange-900/20 text-orange-600 dark:text-orange-400",
+      indigo:
+        "bg-indigo-50 dark:bg-indigo-900/20 text-indigo-600 dark:text-indigo-400",
     };
     return colorMap[color as keyof typeof colorMap] || colorMap.blue;
   };

@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { MapPin, Calendar, Users, Award, Zap } from 'lucide-react';
+import { MapPin, Calendar, Users, Zap, GraduationCap, CalendarCheck, Globe } from 'lucide-react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -50,69 +50,111 @@ const Experience: React.FC = () => {
 
   const experiences = [
     {
-      title: 'Secretary',
-      organization: 'Computer Science and Engineering Club (CSEC)',
-      location: 'NIT Hamirpur',
-      period: '2024 - Present',
-      type: 'Leadership Role',
-      description: 'Leading the technical initiatives and community engagement for the CSE department club.',
+      title: "Secretary",
+      organization: "Computer Science and Engineering Club (CSEC)",
+      location: "NIT Hamirpur",
+      period: "2024 - Present",
+      type: "Leadership Role",
+      description:
+        "Leading the technical initiatives and community engagement for the CSE department club.",
       responsibilities: [
-        'Managing web development projects and maintaining club website',
-        'Coordinating media and content creation for events and workshops',
-        'Organizing technical workshops and coding competitions',
-        'Building community engagement through social media and outreach programs'
+        "Managing web development projects and maintaining the club website",
+        "Coordinating media and content creation for events and workshops",
+        "Organizing technical workshops and coding competitions",
+        "Building community engagement through social media and outreach programs",
       ],
       achievements: [
-        'Increased club engagement by 150% through digital initiatives',
-        'Successfully organized 5+ technical workshops with 200+ participants',
-        'Led development of club\'s official website with modern tech stack'
+        "Increased club engagement by 150% through digital initiatives",
+        "Successfully organized 5+ technical workshops with 200+ participants",
+        "Led development of club's official website with modern tech stack",
       ],
       icon: Users,
-      color: 'blue'
+      color: "blue",
     },
     {
-      title: 'Hackathon Organizing Team',
-      organization: 'Various Hackathons',
-      location: 'NIT Hamirpur',
-      period: '2025',
-      type: 'Event Management',
-      description: 'Part of organizing team for multiple hackathons and coding competitions.',
+      title: "Event Secretary",
+      organization: "Computer Science and Engineering Club (CSEC)",
+      location: "NIT Hamirpur",
+      period: "2025",
+      type: "Leadership Role",
+      description:
+        "Handled event logistics and coordination for technical and non-technical events organized by the CSEC.",
       responsibilities: [
-        'Technical infrastructure setup and management',
-        'Participant coordination and support',
-        'Problem setting and evaluation for coding contests',
-        'Mentoring participants during hackathons'
+        "Planning and scheduling technical events and coding competitions",
+        "Collaborating with departments and sponsors for event logistics",
+        "Ensuring smooth execution and participation experience during events",
       ],
       achievements: [
-        'Successfully managed technical aspects of major hackathons',
-        'Coordinated events with 900+ participants',
-        'Received appreciation for seamless event execution'
+        "Successfully managed multiple departmental events with 300+ participants",
+        "Streamlined event workflows and documentation for future teams",
+      ],
+      icon: CalendarCheck,
+      color: "purple",
+    },
+    {
+      title: "Student Coordinator",
+      organization: "Computer Science and Engineering Club (CSEC)",
+      location: "NIT Hamirpur",
+      period: "2025 - Present",
+      type: "Coordination Role",
+      description:
+        "Coordinating student activities, assisting in technical event planning, and bridging communication between the student body and club leadership.",
+      responsibilities: [
+        "Assisting in planning and execution of coding events and workshops",
+        "Facilitating smooth coordination between student teams and faculty advisors",
+        "Supporting technical initiatives and documentation of club activities",
+      ],
+      achievements: [
+        "Improved communication pipeline between club members and faculty",
+        "Actively contributed to successful execution of technical events in 2025",
+      ],
+      icon: GraduationCap,
+      color: "green",
+    },
+    {
+      title: "Web Team Lead",
+      organization: "Computer Science and Engineering Club (CSEC)",
+      location: "NIT Hamirpur",
+      period: "2025",
+      type: "Technical Role",
+      description:
+        "Led the development and design of the CSEC portfolio website showcasing club achievements and ongoing projects.",
+      responsibilities: [
+        "Designed and developed the CSEC portfolio website using modern frontend technologies",
+        "Coordinated with designers and backend developers for content integration",
+        "Maintained performance, accessibility, and responsiveness standards",
+      ],
+      achievements: [
+        "Delivered a visually appealing and responsive club portfolio website",
+        "Improved web visibility and engagement through optimized design",
+      ],
+      icon: Globe,
+      color: "indigo",
+    },
+    {
+      title: "Hackathon Organizing Team",
+      organization: "Various Hackathons",
+      location: "NIT Hamirpur",
+      period: "2025",
+      type: "Event Management",
+      description:
+        "Part of organizing team for multiple hackathons and coding competitions.",
+      responsibilities: [
+        "Technical infrastructure setup and management",
+        "Participant coordination and support",
+        "Problem setting and evaluation for coding contests",
+        "Mentoring participants during hackathons",
+      ],
+      achievements: [
+        "Successfully managed technical aspects of major hackathons",
+        "Coordinated events with 900+ participants",
+        "Received appreciation for seamless event execution",
       ],
       icon: Zap,
-      color: 'orange'
-    }
+      color: "orange",
+    },
   ];
 
-  // const achievements = [
-  //   {
-  //     title: '300+ DSA Problems',
-  //     description: 'Solved across LeetCode, GeeksforGeeks, and Codeforces',
-  //     icon: Award,
-  //     color: 'green'
-  //   },
-  //   {
-  //     title: 'Full Stack Projects',
-  //     description: '5+ complete MERN stack applications developed',
-  //     icon: Users,
-  //     color: 'blue'
-  //   },
-  //   {
-  //     title: 'Technical Leadership',
-  //     description: 'Leading CSEC initiatives and hackathon organizations',
-  //     icon: Zap,
-  //     color: 'purple'
-  //   }
-  // ];
 
   const getColorClasses = (color: string) => {
     const colorMap = {
@@ -124,15 +166,6 @@ const Experience: React.FC = () => {
     return colorMap[color as keyof typeof colorMap] || colorMap.blue;
   };
 
-  const getBgColor = (color: string) => {
-    const colorMap = {
-      blue: 'bg-blue-100 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400',
-      orange: 'bg-orange-100 dark:bg-orange-900/20 text-orange-600 dark:text-orange-400',
-      green: 'bg-green-100 dark:bg-green-900/20 text-green-600 dark:text-green-400',
-      purple: 'bg-purple-100 dark:bg-purple-900/20 text-purple-600 dark:text-purple-400'
-    };
-    return colorMap[color as keyof typeof colorMap] || colorMap.blue;
-  };
 
   return (
     <section id="experience" ref={sectionRef} className="py-20 bg-gray-200 dark:bg-slate-900">
@@ -142,28 +175,28 @@ const Experience: React.FC = () => {
             Experience & Leadership
           </h2>
           <p className="text-lg text-gray-600 dark:text-slate-400 max-w-3xl mx-auto">
-            My journey in leadership roles, event management, and community building 
+            My journey in leadership roles, event management, and community building
             alongside technical development and problem-solving achievements.
           </p>
         </div>
 
-       
+
         <div className="relative">
-      
+
           <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-0.5 bg-gray-300 dark:bg-slate-600 transform md:-translate-x-px"></div>
 
           {experiences.map((exp, index) => {
             const Icon = exp.icon;
             return (
               <div key={index} className={`timeline-item relative flex items-center mb-12 ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'}`}>
-            
+
                 <div className="absolute left-0 md:left-1/2 w-8 h-8 bg-white dark:bg-slate-900 border-4 border-blue-500 rounded-full transform md:-translate-x-1/2 flex items-center justify-center">
                   <Icon className="w-4 h-4 text-blue-500" />
                 </div>
 
                 <div className={`ml-12 md:ml-0 md:w-1/2 ${index % 2 === 0 ? 'md:pr-12' : 'md:pl-12'}`}>
                   <div className="bg-gray-50 dark:bg-slate-800 rounded-2xl p-6 shadow-lg border border-gray-200 dark:border-slate-700 hover:shadow-xl transition-all duration-300">
-               
+
                     <div className="mb-4">
                       <div className="flex items-center gap-2 mb-2">
                         <span className={`px-3 py-1 rounded-full text-xs font-medium bg-gradient-to-r ${getColorClasses(exp.color)} text-white`}>
@@ -188,7 +221,7 @@ const Experience: React.FC = () => {
                       </div>
                     </div>
 
-                  
+
                     <p className="text-gray-700 dark:text-slate-300 mb-4">
                       {exp.description}
                     </p>
@@ -227,7 +260,7 @@ const Experience: React.FC = () => {
           })}
         </div>
 
-        
+
         {/* <div className="achievements-section mt-20">
           <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-8 text-center">
             Key Achievements

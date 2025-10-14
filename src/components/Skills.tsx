@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { Code, Database, Globe, Wrench, GitBranch, Smartphone } from 'lucide-react';
+import { Code, Database, Globe, Wrench} from 'lucide-react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import CountUp from '../ui/CountUp';
@@ -182,7 +182,7 @@ const Skills: React.FC = () => {
               <div className="text-4xl font-bold text-blue-600 dark:text-blue-400 mb-2">
                 <CountUp
                   from={0}
-                  to={400}
+                  to={600}
                   separator=","
                   direction="up"
                   duration={1}
@@ -195,7 +195,7 @@ const Skills: React.FC = () => {
             <div className="skill-category">
               <div className="text-4xl font-bold text-green-600 dark:text-green-400 mb-2"><CountUp
                 from={0}
-                to={5}
+                to={6}
                 separator=","
                 direction="up"
                 duration={1}
@@ -205,7 +205,7 @@ const Skills: React.FC = () => {
               <div className="text-sm text-gray-500 dark:text-slate-500 mt-1">MERN Stack Applications</div>
             </div>
             <div className="skill-category">
-              <div className="text-4xl font-bold text-orange-600 dark:text-orange-400 mb-2">1+</div>
+              <div className="text-4xl font-bold text-orange-600 dark:text-orange-400 mb-2">2+</div>
               <div className="text-gray-700 dark:text-slate-300">Years Experience</div>
               <div className="text-sm text-gray-500 dark:text-slate-500 mt-1">Web Development</div>
             </div>
