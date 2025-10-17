@@ -53,7 +53,7 @@ const Experience: React.FC = () => {
       title: "Secretary",
       organization: "Computer Science and Engineering Club (CSEC)",
       location: "NIT Hamirpur",
-      period: "2024 - Present",
+      period: "2024 - 2025 ",
       type: "Leadership Role",
       description:
         "Leading the technical initiatives and community engagement for the CSE department club.",
