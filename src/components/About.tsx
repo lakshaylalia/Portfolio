@@ -66,7 +66,7 @@ const About: React.FC = () => {
       icon: Cpu,
       title: "Backend Developer",
       description:
-        "Designing APIs and scalable backend systems using Node.js or Spring Boot.",
+        "Designing APIs and scalable backend systems using Node.js",
       color: "purple",
     },
     {
