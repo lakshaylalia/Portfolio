@@ -7,17 +7,19 @@ export const useTheme = () => {
       if (stored) {
         return stored === 'dark';
       }
-      return false;
+      return true; // Default to dark mode
     }
-    return false;
+    return true;
   });
 
   useEffect(() => {
     const root = window.document.documentElement;
     if (isDark) {
       root.classList.add('dark');
+      root.classList.remove('light-mode');
     } else {
       root.classList.remove('dark');
+      root.classList.add('light-mode');
     }
     localStorage.setItem('theme', isDark ? 'dark' : 'light');
   }, [isDark]);

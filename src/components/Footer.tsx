@@ -1,67 +1,83 @@
+import { Github, Linkedin, Globe } from 'lucide-react';
 
-function Footer() {
-    return (
-        <footer className="bg-slate-900 dark:bg-black text-white py-12 px-4">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <div>
-                        <h3 className="text-2xl font-bold bg-gradient-to-r from-indigo-400 via-violet-400 to-emerald-400 bg-clip-text text-transparent mb-4">
-                            Lakshay Lalia
-                        </h3>
-                        <p className="text-slate-400 leading-relaxed">
-                            Pre-final year CSE student at NIT Hamirpur | Turning ideas into impactful code, one project at a time.
-                        </p>
-                    </div>
-                    <div>
-                        <h4 className="text-lg font-semibold mb-4">Quick Links</h4>
-                        <div className="space-y-2">
-                            {['About', 'Projects', 'Skills', 'Experience', 'Contact'].map((item) => (
-                                <button
-                                    key={item}
-                                    onClick={() => {
-                                        const element = document.getElementById(item.toLowerCase());
-                                        if (element) {
-                                            element.scrollIntoView({ behavior: 'smooth' });
-                                        }
-                                    }}
-                                    className="block text-slate-400 hover:text-white transition-colors duration-200"
-                                >
-                                    {item}
-                                </button>
-                            ))}
-                        </div>
-                    </div>
-                    <div>
-                        <h4 className="text-lg font-semibold mb-4">Get In Touch</h4>
-                        <div className="space-y-2 text-slate-400">
-                            <p>Kangra, Himachal Pradesh</p>
-                            <p>lakshaylalia@gmail.com</p>
-                            <div className="flex space-x-4 mt-4">
-                                <a href="https://github.com/lakshaylalia" target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-white transition-colors duration-200">
-                                    GitHub
-                                </a>
-                                <a href="https://www.linkedin.com/in/lakshay-lalia/" target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-white transition-colors duration-200">
-                                    LinkedIn
-                                </a>
-                                <a href="https://codolio.com/profile/Phoenix_13" target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-white transition-colors duration-200">
-                                    Codolio
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+const Footer = () => {
+  const currentYear = new Date().getFullYear();
 
-                <div className="border-t border-slate-800 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
-                    <p className="text-slate-400 text-sm">
-                        © 2024 Lakshay Lalia. All rights reserved.
-                    </p>
-                    <p className="text-slate-400 text-sm mt-4 md:mt-0">
-                        Designed with ❤️ by Lakshay Lalia.
-                    </p>
-                </div>
-            </div>
-        </footer>
-    )
-}
+  const navItems = ['About', 'Projects', 'Skills', 'Experience', 'Contact'];
 
-export default Footer
+  const socialLinks = [
+    { icon: Github, href: 'https://github.com/lakshaylalia', label: 'GitHub' },
+    { icon: Linkedin, href: 'https://www.linkedin.com/in/lakshay-lalia/', label: 'LinkedIn' },
+    { icon: Globe, href: 'https://codolio.com/profile/Phoenix_13', label: 'Codolio' },
+  ];
+
+  const scrollToSection = (id: string) => {
+    const element = document.getElementById(id.toLowerCase());
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  return (
+    <footer className="relative border-t border-[var(--border)]">
+      {/* Gradient top border accent */}
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-accent/40 to-transparent" />
+
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+          {/* Left — Brand */}
+          <div className="flex flex-col sm:flex-row items-center gap-4">
+            <span className="text-sm font-semibold text-content-primary tracking-tight">
+              Lakshay<span className="gradient-text">.</span>
+            </span>
+            <span className="hidden sm:block w-px h-4 bg-[var(--border)]" />
+            <span className="text-xs text-content-muted">
+              © {currentYear} Lakshay Lalia. All rights reserved.
+            </span>
+          </div>
+
+          {/* Center — Nav */}
+          <nav className="flex flex-wrap justify-center gap-4">
+            {navItems.map((item) => (
+              <button
+                key={item}
+                onClick={() => scrollToSection(item)}
+                className="text-xs text-content-muted hover:text-content-primary transition-colors duration-300"
+              >
+                {item}
+              </button>
+            ))}
+          </nav>
+
+          {/* Right — Social */}
+          <div className="flex items-center gap-2">
+            {socialLinks.map((social, index) => {
+              const Icon = social.icon;
+              return (
+                <a
+                  key={index}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-2 rounded-lg text-content-muted hover:text-content-primary transition-all duration-300 hover:bg-[var(--bg-card)]"
+                  aria-label={social.label}
+                >
+                  <Icon className="w-4 h-4" />
+                </a>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Bottom credit */}
+        <div className="mt-6 pt-4 border-t border-[var(--border)] text-center">
+          <p className="text-[11px] text-content-muted">
+            Designed & built by Lakshay Lalia
+          </p>
+        </div>
+      </div>
+    </footer>
+  );
+};
+
+export default Footer;

@@ -1,6 +1,4 @@
-import  { useEffect, useState } from 'react';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useEffect, useState } from 'react';
 
 import Header from './components/Header';
 import Hero from './components/Hero';
@@ -10,52 +8,56 @@ import Skills from './components/Skills';
 import Experience from './components/Experience';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
-
-gsap.registerPlugin(ScrollTrigger);
+import ScrollProgress from './components/ScrollProgress';
+import SpotlightCursor from './components/SpotlightCursor';
 
 function App() {
   const [currentSection, setCurrentSection] = useState('home');
 
   useEffect(() => {
-    const handleScroll = () => {
-      const sections = ['home', 'about', 'projects', 'skills', 'experience', 'contact'];
-      const scrollPosition = window.scrollY + 100;
+    const sections = ['home', 'about', 'projects', 'skills', 'experience', 'contact'];
 
-      sections.forEach(section => {
-        const element = document.getElementById(section);
-        if (element) {
-          const offsetTop = element.offsetTop;
-          const offsetHeight = element.offsetHeight;
-
-          if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
-            setCurrentSection(section);
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setCurrentSection(entry.target.id);
           }
-        }
-      });
-    };
+        });
+      },
+      {
+        rootMargin: '-40% 0px -60% 0px',
+        threshold: 0,
+      }
+    );
 
-    window.addEventListener('scroll', handleScroll);
-    handleScroll(); 
+    sections.forEach((id) => {
+      const element = document.getElementById(id);
+      if (element) observer.observe(element);
+    });
 
-    // Cleanup
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
-
-  useEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
-    ScrollTrigger.refresh();
-    return () => {
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
-    };
+    return () => observer.disconnect();
   }, []);
 
   return (
-    <section className="min-h-screen bg-white dark:bg-slate-900 transition-colors duration-300 mt-12 lg:mt-0">
+    <div className="min-h-screen bg-[var(--bg-primary)] text-[var(--text-primary)] transition-colors duration-500">
+      {/* Scroll progress indicator */}
+      <ScrollProgress />
 
+      {/* Cursor spotlight effect */}
+      <SpotlightCursor />
+
+      {/* Animated mesh gradient background */}
+      <div className="fixed inset-0 mesh-gradient pointer-events-none z-0" />
+
+      {/* Grid background overlay */}
+      <div className="fixed inset-0 grid-background pointer-events-none z-0 opacity-50" />
+
+      {/* Navigation */}
       <Header currentSection={currentSection} />
-      <main className="relative">
+
+      {/* Main content */}
+      <main className="relative z-10">
         <Hero />
         <About />
         <Projects />
@@ -63,8 +65,10 @@ function App() {
         <Experience />
         <Contact />
       </main>
+
+      {/* Footer */}
       <Footer />
-    </section>
+    </div>
   );
 }
 
