@@ -61,7 +61,7 @@ const Skills: React.FC = () => {
       sublabel: "LeetCode · GFG · Codeforces",
     },
     {
-      value: 7,
+      value: 8,
       suffix: "",
       label: "Full Stack Projects",
       sublabel: "MERN Stack Applications",

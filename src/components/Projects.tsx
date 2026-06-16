@@ -66,6 +66,19 @@ const Projects: React.FC = () => {
       category: "Systems",
     },
     {
+    title: "Wild Oasis",
+    description:
+      "Hotel management dashboard for internal staff to manage cabins, bookings, and guests. Built with React and Supabase for real-time data, featuring cabin availability tracking, booking lifecycle management (check-in/check-out), and a dark mode dashboard with sales and occupancy analytics.",
+    technologies: ["React", "Supabase", "React Query", "Styled Components"],
+    gradient: "from-emerald-500 to-teal-500",
+    github: "https://github.com/lakshaylalia/Wild-Oasis",
+    demo: "https://wild-oasis-alpha-red.vercel.app/",
+    previewImage: "/WildOasisPreview.jpg",
+    status: "Completed",
+    year: "2025",
+    category: "Full Stack",
+  },
+    {
       title: "Vibble",
       description:
         "Hybrid platform combining YouTube and Twitter — share video content with social media interactions and real-time engagement features.",
