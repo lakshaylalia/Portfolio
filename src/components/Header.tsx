@@ -18,74 +18,65 @@ const Header: React.FC<HeaderProps> = ({ currentSection }) => {
     { name: 'Projects', href: '#projects' },
     { name: 'Skills', href: '#skills' },
     { name: 'Experience', href: '#experience' },
-    { name: 'Contact', href: '#contact' }
+    { name: 'Contact', href: '#contact' },
   ];
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
+    const handleScroll = () => setIsScrolled(window.scrollY > 20);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   const scrollToSection = (href: string) => {
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
+    document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' });
     setIsMenuOpen(false);
   };
 
   return (
     <motion.header
-      initial={{ y: -100, opacity: 0 }}
+      initial={{ y: -80, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+      transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? 'glass-strong shadow-lg shadow-[var(--shadow-color)]'
+          ? 'glass-strong border-b border-[var(--border)]'
           : 'bg-transparent'
       }`}
     >
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16 md:h-18">
+        <div className="flex items-center justify-between h-16">
+
           {/* Logo */}
-          <motion.button
+          <button
             onClick={() => scrollToSection('#home')}
-            className="flex items-center gap-3 group"
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
+            className="text-base font-semibold text-content-primary tracking-tight"
           >
-            <span className="text-xl font-bold text-content-primary tracking-tight">
-              Lakshay
-              <span className="gradient-text ml-0.5">.</span>
-            </span>
-          </motion.button>
+            Lakshay<span className="gradient-text">.</span>
+          </button>
 
           {/* Desktop Nav */}
-          <nav className="hidden md:flex items-center gap-1">
+          <nav className="hidden md:flex items-center gap-0.5">
             {navItems.map((item, index) => {
               const isActive = currentSection === item.href.substring(1);
               return (
                 <motion.button
                   key={item.name}
                   onClick={() => scrollToSection(item.href)}
-                  initial={{ opacity: 0, y: -10 }}
+                  initial={{ opacity: 0, y: -8 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.1 + index * 0.05, duration: 0.4 }}
-                  className={`relative px-3 py-2 text-sm font-medium rounded-lg transition-colors duration-300 ${
+                  transition={{ delay: 0.08 + index * 0.04, duration: 0.35 }}
+                  className={`relative px-3.5 py-2 text-sm transition-colors duration-200 rounded-lg ${
                     isActive
-                      ? 'text-accent'
-                      : 'text-content-secondary hover:text-content-primary'
+                      ? 'text-content-primary font-medium'
+                      : 'text-content-secondary hover:text-content-primary font-normal'
                   }`}
                 >
                   {item.name}
                   {isActive && (
                     <motion.div
                       layoutId="activeNav"
-                      className="absolute -bottom-0.5 left-1/2 -translate-x-1/2 w-4 h-0.5 rounded-full bg-accent"
-                      transition={{ type: 'spring', stiffness: 380, damping: 30 }}
+                      className="absolute bottom-0.5 left-1/2 -translate-x-1/2 w-3.5 h-[2px] rounded-full bg-accent"
+                      transition={{ type: 'spring', stiffness: 400, damping: 32 }}
                     />
                   )}
                 </motion.button>
@@ -94,13 +85,12 @@ const Header: React.FC<HeaderProps> = ({ currentSection }) => {
           </nav>
 
           {/* Right controls */}
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-1">
             {/* Theme toggle */}
             <motion.button
               onClick={toggleTheme}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="p-2.5 rounded-xl transition-all duration-300 text-content-secondary hover:text-content-primary hover:bg-[var(--bg-card-hover)]"
+              whileTap={{ scale: 0.92 }}
+              className="p-2 rounded-lg text-content-secondary hover:text-content-primary hover:bg-[var(--bg-card-hover)] transition-all duration-200"
               aria-label="Toggle theme"
             >
               <AnimatePresence mode="wait">
@@ -110,9 +100,9 @@ const Header: React.FC<HeaderProps> = ({ currentSection }) => {
                     initial={{ rotate: -90, opacity: 0 }}
                     animate={{ rotate: 0, opacity: 1 }}
                     exit={{ rotate: 90, opacity: 0 }}
-                    transition={{ duration: 0.2 }}
+                    transition={{ duration: 0.18 }}
                   >
-                    <Sun className="w-[18px] h-[18px]" />
+                    <Sun className="w-4 h-4" />
                   </motion.div>
                 ) : (
                   <motion.div
@@ -120,9 +110,9 @@ const Header: React.FC<HeaderProps> = ({ currentSection }) => {
                     initial={{ rotate: 90, opacity: 0 }}
                     animate={{ rotate: 0, opacity: 1 }}
                     exit={{ rotate: -90, opacity: 0 }}
-                    transition={{ duration: 0.2 }}
+                    transition={{ duration: 0.18 }}
                   >
-                    <Moon className="w-[18px] h-[18px]" />
+                    <Moon className="w-4 h-4" />
                   </motion.div>
                 )}
               </AnimatePresence>
@@ -131,16 +121,33 @@ const Header: React.FC<HeaderProps> = ({ currentSection }) => {
             {/* Mobile menu button */}
             <motion.button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="md:hidden p-2.5 rounded-xl text-content-secondary hover:text-content-primary hover:bg-[var(--bg-card-hover)] transition-all duration-300"
+              whileTap={{ scale: 0.92 }}
+              className="md:hidden p-2 rounded-lg text-content-secondary hover:text-content-primary hover:bg-[var(--bg-card-hover)] transition-all duration-200"
               aria-label="Toggle menu"
             >
-              {isMenuOpen ? (
-                <X className="w-[18px] h-[18px]" />
-              ) : (
-                <Menu className="w-[18px] h-[18px]" />
-              )}
+              <AnimatePresence mode="wait">
+                {isMenuOpen ? (
+                  <motion.div
+                    key="x"
+                    initial={{ rotate: -90, opacity: 0 }}
+                    animate={{ rotate: 0, opacity: 1 }}
+                    exit={{ rotate: 90, opacity: 0 }}
+                    transition={{ duration: 0.15 }}
+                  >
+                    <X className="w-4 h-4" />
+                  </motion.div>
+                ) : (
+                  <motion.div
+                    key="menu"
+                    initial={{ rotate: 90, opacity: 0 }}
+                    animate={{ rotate: 0, opacity: 1 }}
+                    exit={{ rotate: -90, opacity: 0 }}
+                    transition={{ duration: 0.15 }}
+                  >
+                    <Menu className="w-4 h-4" />
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </motion.button>
           </div>
         </div>
@@ -152,22 +159,22 @@ const Header: React.FC<HeaderProps> = ({ currentSection }) => {
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
-              transition={{ duration: 0.3, ease: 'easeInOut' }}
+              transition={{ duration: 0.25, ease: 'easeInOut' }}
               className="md:hidden overflow-hidden"
             >
-              <div className="py-4 space-y-1 border-t border-[var(--border)]">
+              <div className="py-3 space-y-0.5 border-t border-[var(--border)]">
                 {navItems.map((item, index) => {
                   const isActive = currentSection === item.href.substring(1);
                   return (
                     <motion.button
                       key={item.name}
-                      initial={{ opacity: 0, x: -20 }}
+                      initial={{ opacity: 0, x: -12 }}
                       animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: index * 0.05 }}
+                      transition={{ delay: index * 0.04 }}
                       onClick={() => scrollToSection(item.href)}
-                      className={`w-full text-left px-4 py-3 text-sm font-medium rounded-xl transition-all duration-300 ${
+                      className={`w-full text-left px-3 py-2.5 text-sm rounded-lg transition-all duration-200 ${
                         isActive
-                          ? 'text-accent bg-accent-muted'
+                          ? 'text-content-primary font-medium bg-[var(--bg-card)]'
                           : 'text-content-secondary hover:text-content-primary hover:bg-[var(--bg-card)]'
                       }`}
                     >
@@ -175,14 +182,6 @@ const Header: React.FC<HeaderProps> = ({ currentSection }) => {
                     </motion.button>
                   );
                 })}
-                <div className="pt-3 mt-3 border-t border-[var(--border)]">
-                  <button
-                    onClick={() => scrollToSection('#contact')}
-                    className="w-full px-4 py-3 bg-gradient-to-r from-[var(--gradient-start)] to-[var(--gradient-end)] text-white font-semibold rounded-xl text-sm transition-all duration-300 hover:opacity-90"
-                  >
-                    Let's Work Together
-                  </button>
-                </div>
               </div>
             </motion.div>
           )}
