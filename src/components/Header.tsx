@@ -28,8 +28,16 @@ const Header: React.FC<HeaderProps> = ({ currentSection }) => {
   }, []);
 
   const scrollToSection = (href: string) => {
-    document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' });
     setIsMenuOpen(false);
+    // Delay scroll to let the menu close animation finish (0.25s exit duration)
+    setTimeout(() => {
+      const el = document.querySelector(href);
+      if (el) {
+        const headerOffset = 72; // h-16 = 64px + 8px buffer
+        const top = el.getBoundingClientRect().top + window.scrollY - headerOffset;
+        window.scrollTo({ top, behavior: 'smooth' });
+      }
+    }, 300);
   };
 
   return (
@@ -38,11 +46,46 @@ const Header: React.FC<HeaderProps> = ({ currentSection }) => {
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled
+        isScrolled || isMenuOpen
           ? 'glass-strong border-b border-[var(--border)]'
           : 'bg-transparent'
       }`}
     >
+      {/* Mobile Nav - Outside centered container for full width */}
+      <AnimatePresence>
+        {isMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.25, ease: 'easeInOut' }}
+            className="md:hidden absolute top-full left-0 right-0 bg-[var(--bg-primary)] border-b border-[var(--border)]"
+          >
+            <div className="py-3 space-y-1 px-4">
+              {navItems.map((item, index) => {
+                const isActive = currentSection === item.href.substring(1);
+                return (
+                  <motion.button
+                    key={item.name}
+                    initial={{ opacity: 0, x: -12 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: index * 0.04 }}
+                    onClick={() => scrollToSection(item.href)}
+                    className={`w-full text-left px-3 py-3 text-base rounded-lg transition-all duration-200 block ${
+                      isActive
+                        ? 'text-content-primary font-medium bg-[var(--bg-card)]'
+                        : 'text-content-secondary hover:text-content-primary hover:bg-[var(--bg-card)]'
+                    }`}
+                  >
+                    {item.name}
+                  </motion.button>
+                );
+              })}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
 
@@ -151,41 +194,6 @@ const Header: React.FC<HeaderProps> = ({ currentSection }) => {
             </motion.button>
           </div>
         </div>
-
-        {/* Mobile Nav */}
-        <AnimatePresence>
-          {isMenuOpen && (
-            <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: 'auto' }}
-              exit={{ opacity: 0, height: 0 }}
-              transition={{ duration: 0.25, ease: 'easeInOut' }}
-              className="md:hidden overflow-hidden"
-            >
-              <div className="py-3 space-y-0.5 border-t border-[var(--border)]">
-                {navItems.map((item, index) => {
-                  const isActive = currentSection === item.href.substring(1);
-                  return (
-                    <motion.button
-                      key={item.name}
-                      initial={{ opacity: 0, x: -12 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: index * 0.04 }}
-                      onClick={() => scrollToSection(item.href)}
-                      className={`w-full text-left px-3 py-2.5 text-sm rounded-lg transition-all duration-200 ${
-                        isActive
-                          ? 'text-content-primary font-medium bg-[var(--bg-card)]'
-                          : 'text-content-secondary hover:text-content-primary hover:bg-[var(--bg-card)]'
-                      }`}
-                    >
-                      {item.name}
-                    </motion.button>
-                  );
-                })}
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
       </div>
     </motion.header>
   );
