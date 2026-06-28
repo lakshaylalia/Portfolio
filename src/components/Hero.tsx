@@ -48,11 +48,6 @@ const Hero: React.FC = () => {
     { icon: Globe, href: 'https://codolio.com/profile/Phoenix_13', label: 'Codolio' },
   ];
 
-  const stats = [
-    { value: '500+', label: 'LeetCode solved' },
-    { value: '1700+', label: 'Codeforces rating' },
-    { value: '10+', label: 'Projects built' },
-  ];
 
   const scrollTo = (href: string) => {
     const el = document.querySelector(href);
@@ -161,18 +156,6 @@ const Hero: React.FC = () => {
             with clean, scalable code.
           </motion.p>
 
-          {/* Stats */}
-          <motion.div variants={itemVariants} className="grid grid-cols-3 gap-4 w-full max-w-sm">
-            {stats.map((stat) => (
-              <div
-                key={stat.label}
-                className="flex flex-col items-center gap-0.5 px-2 py-3 rounded-xl border border-[var(--border)] bg-[var(--bg-card)]"
-              >
-                <span className="text-lg font-bold gradient-text">{stat.value}</span>
-                <span className="text-[10px] text-content-secondary leading-tight text-center">{stat.label}</span>
-              </div>
-            ))}
-          </motion.div>
 
           {/* CTAs */}
           <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-3 items-center w-full justify-center">
@@ -270,15 +253,6 @@ const Hero: React.FC = () => {
               with clean, scalable code.
             </motion.p>
 
-            {/* Stats */}
-            <motion.div variants={itemVariants} className="flex gap-8">
-              {stats.map((stat, i) => (
-                <div key={i} className="flex flex-col gap-0.5">
-                  <span className="text-2xl font-bold gradient-text">{stat.value}</span>
-                  <span className="text-xs text-content-secondary">{stat.label}</span>
-                </div>
-              ))}
-            </motion.div>
 
             {/* CTAs */}
             <motion.div variants={itemVariants} className="flex gap-3 items-center">

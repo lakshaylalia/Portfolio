@@ -7,52 +7,57 @@ import CountUp from "../ui/CountUp";
 const Skills: React.FC = () => {
   const [activeCategory, setActiveCategory] = useState("All");
 
-  const categories = ["All", "Languages", "Frontend", "Backend", "Tools"];
+  const categories = ["All", "Languages", "Frontend", "Backend", "Mobile", "Tools"];
 
-  const skillCategories = [
+const skillCategories = [
+  {
+    title: "Languages",
+    skills: ["C++", "Java", "Python", "JavaScript", "TypeScript"],
+  },
+  {
+    title: "Frontend",
+    skills: [
+      "React",
+      "Next.js",
+      "Tailwind CSS",
+      "Bootstrap",
+      "HTML5",
+      "CSS3",
+      "Framer Motion",
+    ],
+  },
+  {
+    title: "Backend",
+    skills: [
+      "Node.js",
+      "Express.js",
+      "MongoDB",
+      "MySQL",
+      "PostgreSQL",
+      "REST APIs",
+      "Socket.io",
+      "Spring Boot",
+      "Django",
+      "FastAPI",
+    ],
+  },
     {
-      title: "Languages",
-      skills: ["C++", "Java", "Python", "JavaScript", "TypeScript"],
-    },
-    {
-      title: "Frontend",
-      skills: [
-        "React",
-        "Next.js",
-        "Tailwind CSS",
-        "Bootstrap",
-        "HTML5",
-        "CSS3",
-        "Framer Motion",
-      ],
-    },
-    {
-      title: "Backend",
-      skills: [
-        "Node.js",
-        "Express.js",
-        "MongoDB",
-        "REST APIs",
-        "Socket.io",
-        "Spring Boot",
-        "Django",
-        "FastAPI",
-      ],
-    },
-    {
-      title: "Tools",
-      skills: [
-        "Git & GitHub",
-        "Postman",
-        "VS Code",
-        "Linux",
-        "Vercel",
-        "Render",
-        "Vite",
-      ],
-    },
-  ];
-
+    title: "Mobile",
+    skills: ["React Native", "Expo"],
+  },
+  {
+    title: "Tools",
+    skills: [
+      "Git & GitHub",
+      "Postman",
+      "VS Code",
+      "Linux",
+      "Vercel",
+      "Render",
+      "Vite",
+    ],
+  },
+];
   const stats = [
     {
       value: 750,

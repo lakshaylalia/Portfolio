@@ -5,28 +5,28 @@ import SectionHeader from './SectionHeader';
 import GlassCard from './GlassCard';
 
 const About: React.FC = () => {
-  const highlights = [
-    {
-      icon: Code,
-      title: 'Frontend Engineer',
-      description: 'Creating responsive, performant interfaces with React and modern CSS frameworks.',
-    },
-    {
-      icon: Zap,
-      title: 'App Developer',
-      description: 'Building cross-platform applications with seamless performance and modern UI.',
-    },
-    {
-      icon: Cpu,
-      title: 'Backend Developer',
-      description: 'Designing APIs and scalable systems using Node.js, Express, and MongoDB.',
-    },
-    {
-      icon: Trophy,
-      title: 'Problem Solver',
-      description: 'Solved 750+ DSA problems across competitive programming platforms.',
-    },
-  ];
+const highlights = [
+  {
+    icon: Code,
+    title: 'Frontend Engineer',
+    description: 'Crafting responsive, high-performance user interfaces using React, Next.js, and modern design systems with a focus on UX and accessibility.',
+  },
+  {
+    icon: Zap,
+    title: 'App Developer',
+    description: 'Building seamless, cross-platform mobile experiences with robust state management, fluid animations, and native-level performance.',
+  },
+  {
+    icon: Cpu,
+    title: 'Backend & Systems Engineer',
+    description: 'Designing scalable microservices and robust REST APIs. Experienced in distributed systems, database optimization (SQL/NoSQL), and caching strategies.',
+  },
+  {
+    icon: Trophy,
+    title: 'Problem Solver',
+    description: 'Deep analytical thinker with 750+ DSA problems solved across major competitive programming platforms, optimizing for time and space complexity.',
+  },
+];
 
   return (
     <section id="about" className="section-padding relative">
